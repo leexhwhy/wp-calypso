@@ -512,8 +512,23 @@ const JetpackConnectAuthorizeForm = React.createClass( {
 		);
 	},
 
+	renderMainForm() {
+		return (
+			<Main className="jetpack-connect__authorize-form jetpack-connect">
+				<div className="jetpack-connect__authorize-form">
+					{ this.renderForm() }
+				</div>
+			</Main>
+		);
+	},
+
 	render() {
 		const { queryObject } = this.props.jetpackConnectAuthorize;
+
+		if ( queryObject.already_authorized && ! this.props.isAlreadyOnSitesList ) {
+			this.renderMainForm();
+		}
+
 		if ( this.props.plansFirst && ! this.props.hasJetpackPlanSelected ) {
 			return this.renderPlansSelector();
 		}
@@ -522,13 +537,7 @@ const JetpackConnectAuthorizeForm = React.createClass( {
 			return this.renderNoQueryArgsError();
 		}
 
-		return (
-			<Main className="jetpack-connect__authorize-form jetpack-connect">
-				<div className="jetpack-connect__authorize-form">
-					{ this.renderForm() }
-				</div>
-			</Main>
-		);
+		return this.renderMainForm();
 	}
 } );
 
