@@ -506,7 +506,7 @@ const JetpackConnectAuthorizeForm = React.createClass( {
 		return (
 				<div>
 					<CheckoutData>
-						<Plans showFirst={ true } siteSlug={ this.props.siteSlug } />
+						<Plans plans={ this.props.plans } showFirst={ true } siteSlug={ this.props.siteSlug } />
 					</CheckoutData>
 				</div>
 		);

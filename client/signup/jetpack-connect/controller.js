@@ -26,9 +26,11 @@ import analytics from 'lib/analytics';
 import config from 'config';
 import route from 'lib/route';
 import sitesFactory from 'lib/sites-list';
+import plansFactory from 'lib/plans-list';
 import titleActions from 'lib/screen-title/actions';
 
 const sites = sitesFactory();
+const plans = plansFactory();
 
 /**
  * Module variables
@@ -144,7 +146,8 @@ export default {
 			React.createElement( jetpackConnectAuthorizeForm, {
 				path: context.path,
 				locale: context.params.locale,
-				userModule: userModule
+				userModule: userModule,
+				plans: plans
 			} ),
 			document.getElementById( 'primary' ),
 			context.store
@@ -200,6 +203,7 @@ export default {
 			<CheckoutData>
 				<Plans
 					sites={ sites }
+					plans={ plans }
 					context={ context }
 					showFirst={ true }
 					destinationType={ context.params.destinationType } />
@@ -232,6 +236,7 @@ export default {
 			<CheckoutData>
 				<Plans
 					sites={ sites }
+					plans={ plans }
 					context={ context }
 					destinationType={ context.params.destinationType } />
 			</CheckoutData>,

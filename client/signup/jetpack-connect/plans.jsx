@@ -15,18 +15,15 @@ import { getFlowType } from 'state/jetpack-connect/selectors';
 import Main from 'components/main';
 import ConnectHeader from './connect-header';
 import PlanList from 'components/plans/plan-list' ;
-import plansFactory from 'lib/plans-list';
 import { shouldFetchSitePlans } from 'lib/plans';
 import { recordTracksEvent } from 'state/analytics/actions';
 import { getCurrentUser } from 'state/current-user/selectors';
 import * as upgradesActions from 'lib/upgrades/actions';
+import observe from 'lib/mixins/data-observe';
 import { userCan } from 'lib/site/utils';
 import { cartItems } from 'lib/cart-values';
 import { isCalypsoStartedConnection } from 'state/jetpack-connect/selectors';
 import { selectPlanInAdvance, goBackToWpAdmin } from 'state/jetpack-connect/actions';
-import { getPlans } from 'state/plans/selectors';
-
-const plans = plansFactory();
 
 const CALYPSO_REDIRECTION_PAGE = '/posts/';
 
@@ -38,19 +35,15 @@ const Plans = React.createClass( {
 		showJetpackFreePlan: React.PropTypes.bool
 	},
 
+	mixins: [ observe( 'plans' ) ],
+
 	getInitialState: function getInitialState() {
 		return {
 			redirecting: false
 		};
 	},
 
-	componentWillUnmount: function() {
-		plans.off( 'change', this.autoselectPlan );
-	},
-
 	componentDidMount() {
-		plans.on( 'change', this.autoselectPlan );
-
 		if ( this.hasPreSelectedPlan() ) {
 			this.autoselectPlan();
 		} else {
@@ -75,8 +68,8 @@ const Plans = React.createClass( {
 		if ( ! this.props.showFirst ) {
 			if ( this.props.flowType === 'pro' ||
 				this.props.jetpackConnectSelectedPlans[ selectedSiteSlug ] === 'jetpack_business' ) {
-				plans.get();
-				const plan = plans.getPlanBySlug( 'jetpack_business' );
+				this.props.plans.get();
+				const plan = this.props.plans.getPlanBySlug( 'jetpack_business' );
 				if ( plan ) {
 					return this.selectPlan( cartItems.getItemForPlan( plan ) );
 				}
@@ -84,8 +77,8 @@ const Plans = React.createClass( {
 			if ( this.props.flowType === 'premium' ||
 				this.props.jetpackConnectSelectedPlans[ selectedSiteSlug ] === 'jetpack_premium'
 			) {
-				plans.get();
-				const plan = plans.getPlanBySlug( 'jetpack_premium' );
+				this.props.plans.get();
+				const plan = this.props.plans.getPlanBySlug( 'jetpack_premium' );
 				if ( plan ) {
 					return this.selectPlan( cartItems.getItemForPlan( plan ) );
 				}
@@ -192,7 +185,7 @@ const Plans = React.createClass( {
 			return null;
 		}
 
-		const jetpackPlans = plans.get().filter( ( plan ) => {
+		const jetpackPlans = this.props.plans.get().filter( ( plan ) => {
 			return plan.product_type === 'jetpack';
 		} );
 
@@ -228,7 +221,6 @@ export default connect(
 		const user = getCurrentUser( state );
 		const selectedSite = props.sites ? props.sites.getSelectedSite() : null;
 		return {
-			plans: getPlans( state ),
 			sitePlans: getPlansBySite( state, selectedSite ),
 			jetpackConnectSessions: state.jetpackConnect.jetpackConnectSessions,
 			jetpackConnectAuthorize: state.jetpackConnect.jetpackConnectAuthorize,
