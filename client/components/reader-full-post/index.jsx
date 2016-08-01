@@ -9,7 +9,9 @@ import { translate } from 'i18n-calypso';
 /**
  * Internal Dependencies
  */
-import Main from 'components/main';
+import ReaderMain from 'components/reader-main';
+import Button from 'components/button';
+import Gravatar from 'components/gravatar';
 import StickyPanel from 'components/sticky-panel';
 import Gridicon from 'components/gridicon';
 import { setSection } from 'state/ui/actions';
@@ -24,27 +26,43 @@ import ReaderFullPostHeader from './header';
 import AuthorCompactProfile from 'blocks/author-compact-profile';
 
 export class FullPostView extends React.Component {
+	constructor( props ) {
+		super( props );
+		this.handleBack = this.handleBack.bind( this );
+	}
+
+	handleBack() {
+		this.props.onClose && this.props.onClose();
+	}
+
 	render() {
 		const { post, site, feed } = this.props;
 		/*eslint-disable react/no-danger*/
 		return (
-			<Main className="reader-full-post">
-				<StickyPanel>
-					<div className="reader-full-post__back">
-						<Gridicon icon="arrow-left" />
-					{ translate( 'Back' ) }
-					</div>
+			<ReaderMain className="reader-full-post">
+				<StickyPanel className="reader-full-post__back-container">
+					<Button className="reader-full-post__back" borderless compact onClick={ this.handleBack }>
+						<Gridicon icon="arrow-left" /> { translate( 'Back' ) }
+					</Button>
 				</StickyPanel>
-				<AuthorCompactProfile
-					author={ post.author }
-					siteName={ post.site_name }
-					siteUrl= { post.site_URL }
-					followCount={ site && site.subscribers_count }
-					feedId={ post.feed_ID }
-					siteId={ post.site_ID } />
-				<ReaderFullPostHeader post={ post } />
-				<div dangerouslySetInnerHTML={ { __html: post.content } } />
-			</Main>
+				<div className="reader-full-post__content">
+					<div className="reader-full-post__sidebar">
+						<StickyPanel>
+						<AuthorCompactProfile
+							author={ post.author }
+							siteName={ post.site_name }
+							siteUrl= { post.site_URL }
+							followCount={ site && site.subscribers_count }
+							feedId={ post.feed_ID }
+							siteId={ post.site_ID } />
+						</StickyPanel>
+					</div>
+					<div className="reader-full-post__story">
+						<ReaderFullPostHeader post={ post } />
+						<div className="reader__full-post-content" dangerouslySetInnerHTML={ { __html: this.props.post.content } } />
+					</div>
+				</div>
+			</ReaderMain>
 		);
 	}
 }
@@ -117,7 +135,11 @@ export class FullPostFluxContainer extends React.Component {
 
 	render() {
 		return this.state.post
-			? <FullPostView post={ this.state.post } site={ this.state.site && this.state.site.toJS() } feed={ this.state.feed && this.state.feed.toJS() } />
+			? <FullPostView
+					onClose={ this.props.onClose }
+					post={ this.state.post }
+					site={ this.state.site && this.state.site.toJS() }
+					feed={ this.state.feed && this.state.feed.toJS() } />
 			: null;
 	}
 }
