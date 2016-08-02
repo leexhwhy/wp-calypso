@@ -8,21 +8,18 @@ var React = require( 'react' );
  */
 var SidebarNavigation = require( 'components/sidebar-navigation' ),
 	user = require( 'lib/user' )(),
-	Gravatar = require( 'components/gravatar' ),
-	TitleData = require( 'components/data/screen-title' );
+	Gravatar = require( 'components/gravatar' );
 
 module.exports = React.createClass( {
 	displayName: 'MeSidebarNavigation',
 
 	render: function() {
 		return (
-			<TitleData>
-				<SidebarNavigation
-					sectionName="me"
-					sectionTitle={ this.translate( 'Me' ) }>
-					<Gravatar user={ user.get() } size={ 30 } imgSize={ 400 } />
-				</SidebarNavigation>
-			</TitleData>
+			<SidebarNavigation
+				sectionName="me"
+				sectionTitle={ this.translate( 'Me' ) }>
+				<Gravatar user={ user.get() } size={ 30 } imgSize={ 400 } />
+			</SidebarNavigation>
 		);
 	}
 } );
