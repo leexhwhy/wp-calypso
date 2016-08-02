@@ -47,7 +47,6 @@ var config = require( 'config' ),
 	touchDetect = require( 'lib/touch-detect' ),
 	setRouteAction = require( 'state/ui/actions' ).setRoute,
 	accessibleFocus = require( 'lib/accessible-focus' ),
-	TitleStore = require( 'lib/screen-title/store' ),
 	syncHandler = require( 'lib/wp/sync-handler' ),
 	renderWithReduxStore = require( 'lib/react-helpers' ).renderWithReduxStore,
 	bindWpLocaleState = require( 'lib/wp/localization' ).bindState,
@@ -87,14 +86,6 @@ function init() {
 
 	// Add accessible-focus listener
 	accessibleFocus();
-
-	// Set document title
-	TitleStore.on( 'change', function() {
-		var title = TitleStore.getState().formattedTitle;
-		if ( title && title !== document.title ) {
-			document.title = title;
-		}
-	} );
 }
 
 function setUpContext( reduxStore ) {
