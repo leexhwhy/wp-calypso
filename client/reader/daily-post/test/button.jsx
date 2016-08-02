@@ -13,10 +13,10 @@ import qs from 'qs';
 import useMockery from 'test/helpers/use-mockery';
 import { sitesList, dailyPromptPost } from './fixtures';
 
-describe( 'DailyPostPrompt', () =>{
+describe( 'DailyPostButton', () =>{
 	const SitesPopover = props => <span { ...props } />;
 	const pageSpy = spy();
-	let DailyPostPrompt;
+	let DailyPostButton;
 
 	useMockery( ( mockery ) => {
 		const getPrimary = stub();
@@ -30,32 +30,32 @@ describe( 'DailyPostPrompt', () =>{
 	} );
 
 	before( () =>{
-		DailyPostPrompt = require( '../prompt' );
+		DailyPostButton = require( '../button' );
 	} );
 
 	describe( 'rendering', () => {
 		it( 'does not render if the user does not have any sites', () => {
-			const dailyPostPrompt = shallow( <DailyPostPrompt /> );
+			const dailyPostPrompt = shallow( <DailyPostButton /> );
 			assert.isNull( dailyPostPrompt.type() );
 		} );
 
 		it( 'renders as an li tag by default', () => {
-			const renderAsLi = shallow( <DailyPostPrompt /> );
+			const renderAsLi = shallow( <DailyPostButton /> );
 			assert.equal( 'li', renderAsLi.type() );
 		} );
 
 		it( 'renders as the tag specified in props tagName', () => {
-			const renderAsSpan = shallow( <DailyPostPrompt tagName="span" /> );
+			const renderAsSpan = shallow( <DailyPostButton tagName="span" /> );
 			assert.equal( 'span', renderAsSpan.type() );
 		} );
 
 		it( 'hides the sites list by default', () => {
-			const inactive = shallow( <DailyPostPrompt /> );
+			const inactive = shallow( <DailyPostButton /> );
 			assert.isFalse( inactive.containsMatchingElement( <SitesPopover /> ) );
 		} );
 
 		it( 'shows the sites list if showingMenu is true', () => {
-			const active = shallow( <DailyPostPrompt /> ).setState( { showingMenu: true } );
+			const active = shallow( <DailyPostButton /> ).setState( { showingMenu: true } );
 			assert.isTrue( active.containsMatchingElement( <SitesPopover /> ) );
 		} );
 	} );
@@ -63,7 +63,7 @@ describe( 'DailyPostPrompt', () =>{
 	describe( 'creating a post', () => {
 		let prompt;
 		before( () => {
-			prompt = shallow( <DailyPostPrompt post={ dailyPromptPost } /> );
+			prompt = shallow( <DailyPostButton post={ dailyPromptPost } /> );
 		} );
 		it( 'redirects to the choosen site', () => {
 			prompt.instance().pickSiteToPostTo( 'calypsop2.wordpress.com' );
