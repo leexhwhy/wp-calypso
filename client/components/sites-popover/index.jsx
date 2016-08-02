@@ -58,11 +58,42 @@ module.exports = React.createClass( {
 		} );
 	},
 
+	renderHeader() {
+		if ( ! this.state.popoverVisible || ! this.props.header ) {
+			return null;
+		}
+
+		return (
+			<div className="sites-popover__header">
+				{ this.props.header }
+			</div>
+		);
+	},
+
+	renderSiteSelector() {
+		if ( ! this.state.popoverVisible ) {
+			return null;
+		}
+
+		return (
+			<SiteSelector
+				sites={ this.props.sites }
+				siteBasePath="/post"
+				onSiteSelect={ this.props.onSiteSelect }
+				showAddNewSite={ false }
+				indicator={ false }
+				autoFocus={ ! hasTouch() }
+				groups={ true }
+				onClose={ this.props.onClose } />
+		);
+	},
+
 	render: function() {
 		let classes = classnames(
 			this.props.className,
-			'popover sites-popover',
-			this.props.header && 'has-header' );
+			'popover__container sites-popover',
+			this.props.header && 'has-header'
+		);
 
 		return (
 			<Popover
@@ -71,24 +102,8 @@ module.exports = React.createClass( {
 				onClose={ this.props.onClose }
 				position={ this.props.position }
 				className={ classes }>
-				{ this.state.popoverVisible && this.props.header
-					? <div className="sites-popover__header">
-							{ this.props.header }
-						</div>
-					: null
-				}
-				{ this.state.popoverVisible
-					? <SiteSelector
-							sites={ this.props.sites }
-							siteBasePath="/post"
-							onSiteSelect={ this.props.onSiteSelect }
-							showAddNewSite={ false }
-							indicator={ false }
-							autoFocus={ ! hasTouch() }
-							groups={ true }
-							onClose={ this.props.onClose } />
-					: null
-				}
+				{ this.renderHeader() }
+				{ this.renderSiteSelector() }
 			</Popover>
 		);
 	}
