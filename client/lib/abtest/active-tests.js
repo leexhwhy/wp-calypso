@@ -93,19 +93,6 @@ module.exports = {
 		defaultVariation: 'pressable',
 		allowExistingUsers: false,
 	},
-	translatorInvitation: {
-		datestamp: '20150910',
-		variations: {
-			noNotice: 1,
-			startNow: 1,
-			helpUs: 1,
-			tryItNow: 1,
-			startTranslating: 1,
-			improve: 1
-		},
-		defaultVariation: 'noNotice',
-		allowAnyLocale: true
-	},
 	firstView: {
 		datestamp: '20160726',
 		variations: {
