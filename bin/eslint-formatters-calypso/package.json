@@ -1,8 +1,10 @@
 {
   "name": "eslint-formatters-calypso",
   "version": "0.0.2",
-  "main": "index.js",
-  "bin": "index.js",
+  "main": "./index.js",
+  "bin": {
+    "eslines": "./index.js"
+  },
   "scripts": {
     "lint": "./node_modules/.bin/eslint *js lib/*js tests/test*js",
     "test": "./node_modules/.bin/tape tests/test*js | ./node_modules/.bin/faucet",
@@ -13,7 +15,8 @@
     "test-parsing-errors": "./node_modules/.bin/tape tests/test-parsing-errors.js | ./node_modules/.bin/faucet"
   },
   "dependencies": {
-    "eslint": "2.13.1"
+    "eslint": "2.13.1",
+    "optionator": "0.8.1"
   },
   "devDependencies": {
     "tape": "4.6.0",

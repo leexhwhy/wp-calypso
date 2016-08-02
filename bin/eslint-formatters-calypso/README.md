@@ -19,11 +19,26 @@ From source:
 
 	npm install <path-to-local-src-directory>
 
-### How to use
+### How to use it
+
+#### As a formatter
 
 Pass the formatter to the ESLint runner. For example:
 
 	eslint -f <path-to-src>/src/formatters/parsing-errors.js .
+
+#### As a processor of ESLint output
+
+As the formatters speak JSON, you may want to display the info in a more readable way. Try this instead:
+
+	eslint -f json . | eslines
+
+Or:
+
+	eslint -f json . | eslines -f junit
+	eslint -f json . | eslines -f <path-to-your-formatter-of-choice>
+
+Yes! ESLines script plays nicely with any other valid ESLint formatter. It none is provided, it would use 'stylish', the one that ESLint uses by default.
 
 ### How to configure the formatters
 
