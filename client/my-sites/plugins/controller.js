@@ -20,7 +20,7 @@ import PlanSetup from './jetpack-plugins-setup';
 import PluginListComponent from './main';
 import PluginComponent from './plugin';
 import PluginBrowser from './plugins-browser';
-import titleActions from 'lib/screen-title/actions';
+import { setDocumentHeadTitle as setTitle } from 'state/document-head/actions';
 import { renderWithReduxStore } from 'lib/react-helpers';
 import { setSection } from 'state/ui/actions';
 
@@ -60,7 +60,8 @@ function renderSinglePlugin( context, siteUrl ) {
 			sites,
 			pluginSlug,
 			siteUrl,
-			onPluginRefresh: title => titleActions.setTitle( title )
+			// FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
+			onPluginRefresh: title => context.store.dispatch( setTitle( title ) )
 		} ),
 		document.getElementById( 'primary' ),
 		context.store
@@ -81,7 +82,7 @@ function renderPluginList( context, basePath, siteUrl ) {
 
 	lastPluginsListVisited = getPathWithoutSiteSlug( context, site );
 	lastPluginsQuerystring = context.querystring;
-	titleActions.setTitle( i18n.translate( 'Plugins', { textOnly: true } ), { siteID: siteUrl } );
+	context.store.dispatch( setTitle( i18n.translate( 'Plugins', { textOnly: true } ), { siteID: siteUrl } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 	renderWithReduxStore(
 		React.createElement( PluginListComponent, {
@@ -128,7 +129,7 @@ function renderPluginsBrowser( context, siteUrl ) {
 		site = { slug: context.params.siteOrCategory };
 	}
 
-	titleActions.setTitle( i18n.translate( 'Plugin Browser', { textOnly: true } ), { siteID: siteUrl } );
+	context.store.dispatch( setTitle( i18n.translate( 'Plugin Browser', { textOnly: true } ), { siteID: siteUrl } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 	const analyticsPageTitle = 'Plugin Browser' + ( category ? ': ' + category : '' );
 	analytics

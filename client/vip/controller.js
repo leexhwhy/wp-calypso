@@ -10,7 +10,7 @@ var ReactDom = require( 'react-dom' ),
  * Internal Dependencies
  */
 var route = require( 'lib/route' ),
-	titleActions = require( 'lib/screen-title/actions' ),
+	setTitle = require( 'state/document-head/actions' ).setDocumentHeadTitle,
 	sites = require( 'lib/sites-list' )();
 
 import { renderWithReduxStore } from 'lib/react-helpers';
@@ -26,7 +26,7 @@ module.exports = {
 			site = sites.getSelectedSite(),
 			vipdashboard = require( './vip-dashboard' );
 
-		titleActions.setTitle( i18n.translate( 'VIP', { textOnly: true } ), { siteID: siteUrl } );
+		context.store.dispatch( setTitle( i18n.translate( 'VIP', { textOnly: true } ), { siteID: siteUrl } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 		renderWithReduxStore(
 			React.createElement( vipdashboard, {
@@ -45,7 +45,7 @@ module.exports = {
 			site = sites.getSelectedSite(),
 			vipdeploys = require( './vip-deploys' );
 
-		titleActions.setTitle( i18n.translate( 'VIP Deploys', { textOnly: true } ), { siteID: siteUrl } );
+		context.store.dispatch( setTitle( i18n.translate( 'VIP Deploys', { textOnly: true } ), { siteID: siteUrl } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 		renderWithReduxStore(
 			React.createElement( vipdeploys, {
@@ -64,7 +64,7 @@ module.exports = {
 			site = sites.getSelectedSite(),
 			vipbilling = require( './vip-billing' );
 
-		titleActions.setTitle( i18n.translate( 'VIP Billing', { textOnly: true } ), { siteID: siteUrl } );
+		context.store.dispatch( setTitle( i18n.translate( 'VIP Billing', { textOnly: true } ), { siteID: siteUrl } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 		renderWithReduxStore(
 			React.createElement( vipbilling, {
@@ -83,7 +83,7 @@ module.exports = {
 			site = sites.getSelectedSite(),
 			vipsupport = require( './vip-support' );
 
-		titleActions.setTitle( i18n.translate( 'VIP Support', { textOnly: true } ), { siteID: siteUrl } );
+		context.store.dispatch( setTitle( i18n.translate( 'VIP Support', { textOnly: true } ), { siteID: siteUrl } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 		renderWithReduxStore(
 			React.createElement( vipsupport, {
@@ -102,7 +102,7 @@ module.exports = {
 			site = sites.getSelectedSite(),
 			vipbackups = require( './vip-backups' );
 
-		titleActions.setTitle( i18n.translate( 'VIP Backups', { textOnly: true } ), { siteID: siteUrl } );
+		context.store.dispatch( setTitle( i18n.translate( 'VIP Backups', { textOnly: true } ), { siteID: siteUrl } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 		renderWithReduxStore(
 			React.createElement( vipbackups, {
@@ -123,7 +123,7 @@ module.exports = {
 			status = context.params.status,
 			viplogs = require( './vip-logs' );
 
-		titleActions.setTitle( i18n.translate( 'VIP Logs', { textOnly: true } ), { siteID: siteUrl } );
+		context.store.dispatch( setTitle( i18n.translate( 'VIP Logs', { textOnly: true } ), { siteID: siteUrl } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 		renderWithReduxStore(
 			React.createElement( viplogs, {

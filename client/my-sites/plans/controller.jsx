@@ -14,7 +14,7 @@ import { isEnabled } from 'config';
 import { renderWithReduxStore } from 'lib/react-helpers';
 import route from 'lib/route';
 import sitesFactory from 'lib/sites-list';
-import titleActions from 'lib/screen-title/actions';
+import { setDocumentHeadTitle as setTitle } from 'state/document-head/actions';
 import get from 'lodash/get';
 import { isValidFeatureKey } from 'lib/plans';
 
@@ -56,9 +56,10 @@ export default {
 			analyticsBasePath = basePath;
 		}
 
-		titleActions.setTitle( i18n.translate( 'Plans', { textOnly: true } ),
+		// FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
+		context.store.dispatch( setTitle( i18n.translate( 'Plans', { textOnly: true } ),
 			{ siteID: route.getSiteFragment( context.path ) }
-		);
+		) );
 
 		analytics.tracks.recordEvent( 'calypso_plans_view' );
 		analytics.pageView.record( analyticsBasePath, analyticsPageTitle );
@@ -104,9 +105,10 @@ export default {
 
 		analytics.pageView.record( baseAnalyticsPath, analyticsPageTitle );
 
-		titleActions.setTitle( i18n.translate( 'Compare Plans', { textOnly: true } ), {
+		// FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
+		context.store.dispatch( setTitle( i18n.translate( 'Compare Plans', { textOnly: true } ), {
 			siteID: context.params.domain
-		} );
+		} ) );
 
 		// Scroll to the top
 		if ( typeof window !== 'undefined' ) {

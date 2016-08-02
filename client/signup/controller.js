@@ -19,7 +19,7 @@ import layoutFocus from 'lib/layout-focus';
 import SignupComponent from './main';
 import utils from './utils';
 import userModule from 'lib/user';
-import titleActions from 'lib/screen-title/actions';
+import { setDocumentHeadTitle as setTitle } from 'state/document-head/actions';
 const user = userModule();
 
 /**
@@ -86,7 +86,7 @@ export default {
 		ReactDom.unmountComponentAtNode( document.getElementById( 'secondary' ) );
 		layoutFocus.set( 'content' );
 
-		titleActions.setTitle( i18n.translate( 'Create an account' ) );
+		context.store.dispatch( setTitle( i18n.translate( 'Create an account' ) ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 		ReactDom.render(
 			React.createElement( ReduxProvider, { store: context.store },

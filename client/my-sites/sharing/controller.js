@@ -15,7 +15,7 @@ var sites = require( 'lib/sites-list' )(),
 	notices = require( 'notices' ),
 	route = require( 'lib/route' ),
 	analytics = require( 'lib/analytics' ),
-	titleActions = require( 'lib/screen-title/actions' ),
+	setTitle = require( 'state/document-head/actions' ).setDocumentHeadTitle,
 	analyticsPageTitle = 'Sharing';
 
 import { renderWithReduxStore } from 'lib/react-helpers';
@@ -26,7 +26,7 @@ module.exports = {
 			site = sites.getSelectedSite(),
 			siteUrl = route.getSiteFragment( context.path );
 
-		titleActions.setTitle( i18n.translate( 'Sharing', { textOnly: true } ), { siteID: siteUrl } );
+		context.store.dispatch( setTitle( i18n.translate( 'Sharing', { textOnly: true } ), { siteID: siteUrl } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 		if ( site && ! site.settings && utils.userCan( 'manage_options', site ) ) {
 			site.fetchSettings();

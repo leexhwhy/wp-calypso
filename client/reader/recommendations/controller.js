@@ -9,7 +9,7 @@ import i18n from 'i18n-calypso';
  * Internal dependencies
  */
 import trackScrollPage from 'lib/track-scroll-page';
-import titleActions from 'lib/screen-title/actions';
+import { setDocumentHeadTitle as setTitle } from 'state/document-head/actions';
 import { ensureStoreLoading, trackPageLoad, trackUpdatesLoaded, setPageTitle, userHasHistory } from 'reader/controller-helper';
 import route from 'lib/route';
 import feedStreamFactory from 'lib/feed-stream-store';
@@ -37,7 +37,7 @@ export default {
 		);
 
 		trackPageLoad( basePath, fullAnalyticsPageTitle, mcKey );
-		titleActions.setTitle( i18n.translate( 'Recommended Sites For You ‹ Reader' ) );
+		context.store.dispatch( setTitle( i18n.translate( 'Recommended Sites For You ‹ Reader' ) ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 	},
 
 	// Post Recommendations - Used by the Data team to test recommendation algorithms

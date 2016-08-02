@@ -9,7 +9,7 @@ var React = require( 'react' ),
 /**
  * Internal dependencies
  */
-var titleActions = require( 'lib/screen-title/actions' ),
+var setCount = require( 'state/document-head/actions' ).setDocumentHeadUnreadCount,
 	Gridicon = require( 'components/gridicon' );
 
 var UpdateNotice = React.createClass( {
@@ -33,7 +33,8 @@ var UpdateNotice = React.createClass( {
 	},
 
 	setCount: function() {
-		titleActions.setCount( this.props.count ? this.countString() : false );
+		// FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
+		context.store.dispatch( setCount( this.props.count ? this.countString() : false ) );
 	},
 
 	countString: function() {

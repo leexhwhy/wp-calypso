@@ -17,7 +17,7 @@ import {
 	setPageTitle,
 	trackPageLoad
 } from 'reader/controller-helper';
-import titleActions from 'lib/screen-title/actions';
+import { setDocumentHeadTitle as setTitle } from 'state/document-head/actions';
 import FullPostDialog from './main';
 import ReaderFullPost from 'components/reader-full-post';
 
@@ -43,7 +43,7 @@ function removeFullPostDialog() {
 
 export function resetTitle( context, next ) {
 	if ( __lastTitle ) {
-		titleActions.setTitle( __lastTitle );
+		context.store.dispatch( setTitle( __lastTitle ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 		__lastTitle = null;
 	}
 	next();
