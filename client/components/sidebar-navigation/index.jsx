@@ -2,12 +2,14 @@
  * External dependencies
  */
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 /**
  * Internal Dependencies
  */
 import layoutFocus from 'lib/layout-focus';
 import Gridicon from 'components/gridicon';
+import { getTitle } from 'state/document-head/selectors';
 
 class SidebarNavigation extends React.Component {
 	toggleSidebar( event ) {
@@ -29,7 +31,7 @@ class SidebarNavigation extends React.Component {
 			</header>
 		);
 	}
-};
+}
 
 SidebarNavigation.propTypes = {
 	title: PropTypes.string,
@@ -38,4 +40,8 @@ SidebarNavigation.propTypes = {
 	sectionName: PropTypes.string.isRequired
 };
 
-export default SidebarNavigation;
+export default connect(
+	state => ( {
+		title: getTitle( state )
+	} )
+)( SidebarNavigation );
