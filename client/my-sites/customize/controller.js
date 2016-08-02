@@ -18,12 +18,11 @@ module.exports = {
 
 	customize: function( context ) {
 		var CustomizeComponent = require( 'my-sites/customize/main' ),
-			basePath = route.sectionify( context.path ),
-			siteID = route.getSiteFragment( context.path );
+			basePath = route.sectionify( context.path );
 
 		analytics.pageView.record( basePath, 'Customizer' );
 
-		context.store.dispatch( setTitle( i18n.translate( 'Customizer', { textOnly: true } ), { siteID: siteID } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
+		context.store.dispatch( setTitle( i18n.translate( 'Customizer', { textOnly: true } ) ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 		ReactDom.render(
 			React.createElement( ReduxProvider, { store: context.store },

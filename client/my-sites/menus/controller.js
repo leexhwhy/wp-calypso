@@ -33,7 +33,7 @@ var controller = {
 			return;
 		}
 
-		context.store.dispatch( setTitle( i18n.translate( 'Menus', { textOnly: true } ), { siteID: context.params.site_id } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
+		context.store.dispatch( setTitle( i18n.translate( 'Menus', { textOnly: true } ) ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 		function renderJetpackUpgradeMessage() {
 			ReactDom.render(

@@ -60,7 +60,7 @@ export default {
 };
 
 function renderPeopleList( filter, context ) {
-	context.store.dispatch( setTitle( i18n.translate( 'People', { textOnly: true } ), { siteID: route.getSiteFragment( context.path ) } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
+	context.store.dispatch( setTitle( i18n.translate( 'People', { textOnly: true } ) ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 	renderWithReduxStore(
 		React.createElement( PeopleList, {
@@ -89,7 +89,7 @@ function renderInvitePeople( context ) {
 		analytics.tracks.recordEvent( 'calypso_invite_people_controller_redirect_to_team' );
 	}
 
-	context.store.dispatch( setTitle( i18n.translate( 'Invite People', { textOnly: true } ), { siteID: route.getSiteFragment( context.path ) } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
+	context.store.dispatch( setTitle( i18n.translate( 'Invite People', { textOnly: true } ) ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 	renderWithReduxStore(
 		React.createElement( InvitePeople, {
@@ -113,7 +113,7 @@ function renderSingleTeamMember( context ) {
 	site = sites.getSelectedSite();
 	siteId = site && site.ID ? site.ID : 0;
 
-	context.store.dispatch( setTitle( i18n.translate( 'View Team Member', { textOnly: true } ), { siteID: route.getSiteFragment( context.path ) } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
+	context.store.dispatch( setTitle( i18n.translate( 'View Team Member', { textOnly: true } ) ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 	if ( siteId && 0 !== siteId ) {
 		user = UsersStore.getUserByLogin( siteId, userLogin );

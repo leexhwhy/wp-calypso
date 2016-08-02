@@ -57,9 +57,7 @@ export default {
 		}
 
 		// FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
-		context.store.dispatch( setTitle( i18n.translate( 'Plans', { textOnly: true } ),
-			{ siteID: route.getSiteFragment( context.path ) }
-		) );
+		context.store.dispatch( setTitle( i18n.translate( 'Plans', { textOnly: true } ) ) );
 
 		analytics.tracks.recordEvent( 'calypso_plans_view' );
 		analytics.pageView.record( analyticsBasePath, analyticsPageTitle );
@@ -106,9 +104,7 @@ export default {
 		analytics.pageView.record( baseAnalyticsPath, analyticsPageTitle );
 
 		// FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
-		context.store.dispatch( setTitle( i18n.translate( 'Compare Plans', { textOnly: true } ), {
-			siteID: context.params.domain
-		} ) );
+		context.store.dispatch( setTitle( i18n.translate( 'Compare Plans', { textOnly: true } ) ) );
 
 		// Scroll to the top
 		if ( typeof window !== 'undefined' ) {

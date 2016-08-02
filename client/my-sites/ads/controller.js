@@ -49,7 +49,7 @@ module.exports = {
 			layoutTitle = _getLayoutTitle( context ),
 			site = sites.getSelectedSite();
 
-		context.store.dispatch( setTitle( layoutTitle, { siteID: context.params.site_id } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
+		context.store.dispatch( setTitle( layoutTitle ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 		if ( ! utils.userCan( 'manage_options', site ) ) {
 			page.redirect( '/stats' + pathSuffix );

@@ -29,9 +29,7 @@ module.exports = {
 
 		// Page Title
 		// FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
-		context.store.dispatch( setTitle( i18n.translate( 'Media', { textOnly: true } ), {
-			siteID: route.getSiteFragment( context.path )
-		} ) );
+		context.store.dispatch( setTitle( i18n.translate( 'Media', { textOnly: true } ) ) );
 
 		// Render
 		ReactDom.render(

@@ -44,9 +44,7 @@ module.exports = {
 			basePath = route.sectionify( context.path );
 
 		// FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
-		context.store.dispatch( setTitle( i18n.translate( 'Domain Search' ), {
-			siteID: context.params.domain
-		} ) );
+		context.store.dispatch( setTitle( i18n.translate( 'Domain Search' ) ) );
 
 		analytics.pageView.record( basePath, 'Domain Search > Domain Registration' );
 
@@ -76,9 +74,7 @@ module.exports = {
 			basePath = route.sectionify( context.path );
 
 		// FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
-		context.store.dispatch( setTitle( i18n.translate( 'Redirect a Site' ), {
-			siteID: context.params.domain
-		} ) );
+		context.store.dispatch( setTitle( i18n.translate( 'Redirect a Site' ) ) );
 
 		analytics.pageView.record( basePath, 'Domain Search > Site Redirect' );
 
@@ -101,9 +97,7 @@ module.exports = {
 			basePath = route.sectionify( context.path );
 
 		// FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
-		context.store.dispatch( setTitle( i18n.translate( 'Map a Domain' ), {
-			siteID: context.params.domain
-		} ) );
+		context.store.dispatch( setTitle( i18n.translate( 'Map a Domain' ) ) );
 
 		analytics.pageView.record( basePath, 'Domain Search > Domain Mapping' );
 		renderWithReduxStore(
@@ -131,10 +125,7 @@ module.exports = {
 		context.store.dispatch( setTitle(
 			i18n.translate( 'Register %(domain)s', {
 				args: { domain: context.params.registerDomain }
-			} ),
-			{
-				siteID: context.params.domain
-			}
+			} )
 		) );
 
 		const handleAddGoogleApps = function( googleAppsCartItem ) {
@@ -185,9 +176,7 @@ module.exports = {
 		analytics.pageView.record( basePath, 'Checkout' );
 
 	// FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
-	context.store.dispatch( setTitle( i18n.translate( 'Checkout' ), {
-			siteID: context.params.domain
-		} ) );
+	context.store.dispatch( setTitle( i18n.translate( 'Checkout' ) ) );
 
 		renderWithReduxStore(
 			(

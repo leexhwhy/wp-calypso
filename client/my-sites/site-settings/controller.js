@@ -65,9 +65,7 @@ module.exports = {
 		const { section } = context.params;
 
 		// FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
-		context.store.dispatch( setTitle( i18n.translate( 'Site Settings', { textOnly: true } ),
-			{ siteID: route.getSiteFragment( context.path ) }
-		) );
+		context.store.dispatch( setTitle( i18n.translate( 'Site Settings', { textOnly: true } ) ) );
 
 		// if site loaded, but user cannot manage site, redirect
 		if ( site && ! utils.userCan( 'manage_options', site ) ) {

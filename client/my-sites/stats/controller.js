@@ -299,7 +299,7 @@ module.exports = {
 			}
 
 			if ( currentSite && currentSite.domain ) {
-				context.store.dispatch( setTitle( i18n.translate( 'Stats', { textOnly: true } ), { siteID: currentSite.domain } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
+				context.store.dispatch( setTitle( i18n.translate( 'Stats', { textOnly: true } ) ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 			}
 
 			if ( currentSite && 'object' === typeof currentSite.options && 'undefined' !== typeof currentSite.options.gmt_offset ) {

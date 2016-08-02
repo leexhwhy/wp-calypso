@@ -29,10 +29,7 @@ const productsList = new ProductsList(),
 	sites = new SitesList();
 
 const setTitle = function( title, pageContext ) {
-	pageContext.store.dispatch( setDocumentHeadTitle(
-		title,
-		{ siteID: pageContext.params.site }
-	) );
+	pageContext.store.dispatch( setDocumentHeadTitle( title ) );
 };
 
 module.exports = {

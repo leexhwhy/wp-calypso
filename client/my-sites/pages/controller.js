@@ -29,7 +29,7 @@ var controller = {
 			baseAnalyticsPath;
 
 		status = ( ! status || status === siteID ) ? '' : status;
-		context.store.dispatch( setTitle( i18n.translate( 'Pages', { textOnly: true } ), { siteID: siteID } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
+		context.store.dispatch( setTitle( i18n.translate( 'Pages', { textOnly: true } ) ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 		if ( siteID ) {
 			baseAnalyticsPath = basePath + '/:site';

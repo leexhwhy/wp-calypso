@@ -23,10 +23,9 @@ import { renderWithReduxStore } from 'lib/react-helpers';
 module.exports = {
 	layout: function( context ) {
 		var Sharing = require( 'my-sites/sharing/main' ),
-			site = sites.getSelectedSite(),
-			siteUrl = route.getSiteFragment( context.path );
+			site = sites.getSelectedSite();
 
-		context.store.dispatch( setTitle( i18n.translate( 'Sharing', { textOnly: true } ), { siteID: siteUrl } ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
+		context.store.dispatch( setTitle( i18n.translate( 'Sharing', { textOnly: true } ) ) ); // FIXME: Auto-converted from the Flux setTitle action. Please use <DocumentHead> instead.
 
 		if ( site && ! site.settings && utils.userCan( 'manage_options', site ) ) {
 			site.fetchSettings();
