@@ -63,7 +63,7 @@ describe( 'DailyPostPrompt', () =>{
 	describe( 'creating a post', () => {
 		let prompt;
 		before( () => {
-			 prompt = shallow( <DailyPostPrompt post={ dailyPromptPost } /> );
+			prompt = shallow( <DailyPostPrompt post={ dailyPromptPost } /> );
 		} );
 		it( 'redirects to the choosen site', () => {
 			prompt.instance().pickSiteToPostTo( 'calypsop2.wordpress.com' );
