@@ -62,27 +62,21 @@ export default React.createClass( {
 		switch ( abtest( 'signupStoreBenchmarking' ) ) {
 			case 'bluehost':
 			case 'bluehostWithWoo':
-				return (
-					<BluehostStoreStep { ... this.props } onBackClick={ this.handleStoreBackClick } />
-				);
+				return <BluehostStoreStep { ... this.props } onBackClick={ this.handleStoreBackClick } />;
 			case 'siteground':
-				return (
-					<SitegroundStoreStep { ... this.props } onBackClick={ this.handleStoreBackClick } />
-				);
+				return <SitegroundStoreStep { ... this.props } onBackClick={ this.handleStoreBackClick } />;
 			default:
-				return (
-					<PressableStoreStep { ... this.props } ref={ this.onPressableStoreStepRef } onBackClick={ this.handleStoreBackClick } />
-				);
+				return <PressableStoreStep { ... this.props } ref={ this.onPressableStoreStepRef } onBackClick={ this.handleStoreBackClick } />;
 		}
 	},
 
 	render() {
-		let storeWrapperClassName = classNames( {
+		const storeWrapperClassName = classNames( {
 			'design-type-with-store__store-wrapper': true,
 			'is-hidden': ! this.state.showStore,
 		} );
 
-		let sectionWrapperClassName = classNames( {
+		const sectionWrapperClassName = classNames( {
 			'design-type-with-store__section-wrapper': true,
 			'is-hidden': this.state.showStore,
 		} );
