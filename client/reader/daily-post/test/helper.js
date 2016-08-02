@@ -24,12 +24,4 @@ describe( 'daily post helper', () => {
 			assert.isTrue( helper.isDailyPrompt( posts.dailyPromptPost ) );
 		} );
 	} );
-
-	describe( 'getPingbackAttributes', () => {
-		it( 'returns the url and title of the prompt', () => {
-			const prompt = posts.dailyPromptPost;
-			const pingbackAttributes = helper.getPingbackAttributes( prompt );
-			assert.deepEqual( pingbackAttributes, { url: prompt.URL, title: prompt.title } );
-		} );
-	} );
 } );

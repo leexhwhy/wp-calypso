@@ -12,10 +12,3 @@ export function isDailyPrompt( post ) {
 
 	return post.site_ID === config( 'daily_post_blog_id' ) && some( post.tags, tag => tag.slug.match( /daily-prompts/ ) );
 }
-
-export function getPingbackAttributes( post ) {
-	const url = post.URL;
-	const title = post.title;
-
-	return { url, title };
-}
