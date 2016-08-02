@@ -4,6 +4,10 @@
 import { assert } from 'chai';
 
 describe( 'localStorage', function() {
+	let _originalLocalStorage;
+	before( () => _originalLocalStorage = global.localStorage );
+	after( () => global.localStorage = _originalLocalStorage );
+
 	describe( 'when window.localStorage does not exist', function() {
 		delete global.localStorage;
 
