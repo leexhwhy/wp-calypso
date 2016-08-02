@@ -12,11 +12,11 @@ import { defer } from 'lodash';
  * Internal Dependencies
  */
 import FeedError from 'reader/feed-error';
-import TitleStore from 'lib/screen-title/store';
 import {
 	setPageTitle,
 	trackPageLoad
 } from 'reader/controller-helper';
+import { getTitle } from 'state/document-head/selectors';
 import { setDocumentHeadTitle as setTitle } from 'state/document-head/actions';
 import FullPostDialog from './main';
 import ReaderFullPost from 'components/reader-full-post';
@@ -55,7 +55,7 @@ export function blogPost( context ) {
 		basePath = '/read/blogs/:blog_id/posts/:post_id',
 		fullPageTitle = analyticsPageTitle + ' > Blog Post > ' + blogId + ' > ' + postId;
 
-	__lastTitle = TitleStore.getState().title;
+	__lastTitle = getTitle( context.store.getState() );
 
 	trackPageLoad( basePath, fullPageTitle, 'full_post' );
 
@@ -85,7 +85,7 @@ export function blogPostNew( context ) {
 		basePath = '/read/blogs/:blog_id/posts/:post_id',
 		fullPageTitle = analyticsPageTitle + ' > Blog Post > ' + blogId + ' > ' + postId;
 
-	__lastTitle = TitleStore.getState().title;
+	__lastTitle = getTitle( context.store.getState() );
 
 	trackPageLoad( basePath, fullPageTitle, 'full_post' );
 
@@ -118,7 +118,7 @@ export function feedPost( context ) {
 		basePath = '/read/feeds/:feed_id/posts/:feed_item_id',
 		fullPageTitle = analyticsPageTitle + ' > Feed Post > ' + feedId + ' > ' + postId;
 
-	__lastTitle = TitleStore.getState().title;
+	__lastTitle = getTitle( context.store.getState() );
 
 	trackPageLoad( basePath, fullPageTitle, 'full_post' );
 
@@ -148,7 +148,7 @@ export function feedPostNew( context ) {
 		basePath = '/read/feeds/:feed_id/posts/:feed_item_id',
 		fullPageTitle = analyticsPageTitle + ' > Feed Post > ' + feedId + ' > ' + postId;
 
-	__lastTitle = TitleStore.getState().title;
+	__lastTitle = getTitle( context.store.getState() );
 
 	trackPageLoad( basePath, fullPageTitle, 'full_post' );
 
