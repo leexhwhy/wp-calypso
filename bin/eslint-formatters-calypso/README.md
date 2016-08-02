@@ -35,10 +35,12 @@ As the formatters speak JSON, you may want to display the info in a more readabl
 
 Or:
 
-	eslint -f json . | eslines -f junit
-	eslint -f json . | eslines -f <path-to-your-formatter-of-choice>
+	eslint -f json . | eslines -p parsing-errors -f junit
+	eslint -f json . | eslines -p lines-modified -f html
 
-Yes! ESLines script plays nicely with any other valid ESLint formatter. It none is provided, it would use 'stylish', the one that ESLint uses by default.
+ESLines script would use, by default, the `eslines` processor but any other one can by provided by using `-p` option (or `--processor`).
+
+ESLines script also plays nicely with any other valid ESLint formatter. It would use 'stylish' -the ESLint default- if none provided so the output is human-friendly, but you can choose the one you want by using `-f` option (or `--format`).
 
 ### How to configure the formatters
 

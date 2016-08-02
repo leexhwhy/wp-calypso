@@ -3,7 +3,6 @@
 'use strict';
 
 const path = require( 'path' );
-const eslines = require( './formatters/eslines' );
 
 /*
 * This function should *not* call process.exit() directly,
@@ -13,7 +12,6 @@ const eslines = require( './formatters/eslines' );
 */
 
 module.exports = function( report, options ) {
-	const newReport = JSON.parse( eslines( report ) );
 
 	const getFormatter = format => {
 		// See https://github.com/eslint/eslint/blob/master/lib/cli-engine.js#L477
@@ -48,9 +46,17 @@ module.exports = function( report, options ) {
 		}
 	};
 
+	const getProcessor = processor => {
+		processor = processor || 'eslines';
+		return require( './formatters/' +  processor);
+	};
+
+	const processor = getProcessor( options.processor );
+	const newReport = JSON.parse( processor( report ) );
+
 	if ( newReport ) {
 		const formatter = getFormatter( options.format );
-		process.stdout.write( formatter( report ) );
+		process.stdout.write( formatter( newReport ) );
 
 		return 1;
 	}
