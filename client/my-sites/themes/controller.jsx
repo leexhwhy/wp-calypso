@@ -12,7 +12,6 @@ import SingleSiteComponent from './single-site';
 import MultiSiteComponent from './multi-site';
 import LoggedOutComponent from './logged-out';
 import trackScrollPage from 'lib/track-scroll-page';
-import buildTitle from 'lib/screen-title/utils';
 import { getAnalyticsData } from './helpers';
 import DocumentHead from 'components/data/document-head';
 
@@ -39,8 +38,6 @@ function makeElement( ThemesComponent, Head, store, props ) {
 function getProps( context ) {
 	const { tier, filter, site_id: siteId } = context.params;
 
-	const title = buildTitle( BASE_TITLE, { siteID: siteId } );
-
 	const { basePath, analyticsPageTitle } = getAnalyticsData(
 		context.path,
 		tier,
@@ -56,7 +53,7 @@ function getProps( context ) {
 	};
 
 	return {
-		title,
+		title: BASE_TITLE,
 		tier,
 		filter,
 		analyticsPageTitle,
