@@ -35,7 +35,7 @@ export const BluehostStoreStep = props => {
 
 			<div className="design-type-with-store__container">
 				<div className="design-type-with-store__copy">
-					<img src="/calypso/images/signup/bluehost-logo.png" className="design-type-with-store__logo" />
+					<img src="/calypso/images/signup/bluehost-logo.png" className="design-type-with-store__bluehost-logo" />
 					{ translate(
 						'We\'ve partnered with BlueHost, a top-notch WordPress hosts ' +
 						'with a knack for building great e-commerce stores using WooCommerce.'

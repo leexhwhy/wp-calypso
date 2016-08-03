@@ -6,7 +6,7 @@
 import React from 'react';
 
 export default () => (
-	<svg className="design-type-with-store__logo" width="145px" height="30px" viewBox="0 0 145 30" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<svg className="design-type-with-store__siteground-logo" width="145px" height="30px" viewBox="0 0 145 30" version="1.1" xmlns="http://www.w3.org/2000/svg">
 		<g id="Triforce-E-Commerce:-SiteGround" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
 			<g id="Triforce-E-Commerce:-SiteGround-Step-2-Alt-5" transform="translate(-308.000000, -242.000000)">
 				<g id="Host-Card" transform="translate(275.000000, 209.000000)">
