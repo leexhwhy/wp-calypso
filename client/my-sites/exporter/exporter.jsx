@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react';
  */
 import FoldableCard from 'components/foldable-card';
 import GuidedTransferInProgress from './guided-transfer-in-progress';
-import GuidedTransferAwaitingPurchase from '../guided-transfer/awaiting-purchase-notice';
+import GuidedTransferAwaitingPurchase from 'my-sites/guided-transfer/awaiting-purchase-notice';
 import GuidedTransferOptions from 'my-sites/exporter/guided-transfer-options';
 import GuidedTransferDetails from 'my-sites/exporter/guided-transfer-details';
 import AdvancedSettings from 'my-sites/exporter/advanced-settings';
