@@ -25,6 +25,7 @@ import { userCan } from 'lib/site/utils';
 import { cartItems } from 'lib/cart-values';
 import { isCalypsoStartedConnection } from 'state/jetpack-connect/selectors';
 import { goBackToWpAdmin } from 'state/jetpack-connect/actions';
+import LiveChatButton from './live-chat-button';
 
 const plans = plansFactory();
 
@@ -168,6 +169,7 @@ const Plans = React.createClass( {
 								onSelectFreeJetpackPlan={ this.selectFreeJetpackPlan }/>
 						</div>
 					</div>
+					<LiveChatButton />
 				</Main>
 			</div>
 		);

@@ -33,6 +33,7 @@ import Gridicon from 'components/gridicon';
 import LoggedOutFormFooter from 'components/logged-out-form/footer';
 import Dialog from 'components/dialog';
 import analytics from 'lib/analytics';
+import LiveChatButton from './live-chat-button';
 
 /*
  * Module variables
@@ -376,6 +377,7 @@ const JetpackSSOForm = React.createClass( {
 					action={ this.translate( 'Read Single Sign-On Documentation' ) }
 					actionURL="https://jetpack.com/support/sso/"
 				/>
+				<LiveChatButton />
 			</Main>
 		);
 	},
@@ -447,6 +449,7 @@ const JetpackSSOForm = React.createClass( {
 				</div>
 
 				{ this.renderSharedDetailsDialog() }
+				<LiveChatButton />
 			</Main>
 		);
 	}
